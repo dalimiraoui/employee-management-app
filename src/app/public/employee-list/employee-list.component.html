@@ -35,7 +35,37 @@
 
             <h3 class="px-5 pt-5 font-semibold text-lg capitalize"> Employee list  </h3>
 
-            
+            <div class="grid grid-cols-5 gap-5 p-5 align-items-end font-medium">
+
+                <!-- Employee Minimum Age: -->
+                <div>
+                    <label for="minAge" class="font-medium">Minimum Age:</label>
+                    <input type="number" id="minAge" [(ngModel)]="minAge">
+                </div>
+
+                <!-- Employee Maximum Age: -->
+                <div>
+                    <label for="maxAge" class="font-medium">Maximum Age:</label>
+                    <input type="number" id="maxAge" [(ngModel)]="maxAge">
+                </div>
+        
+                <!-- Employee Minimum Age: -->
+                <div>
+                    <label for="minSalary" class="font-medium">Minimum Salary:</label>
+                    <input type="number" id="minSalary" [(ngModel)]="minSalary">
+                </div>
+
+                <!-- Employee Maximum Salary: -->
+                <div>
+                    <label for="maxSalary" class="font-medium">Maximum Salary:</label>
+                    <input type="number" id="maxSalary" [(ngModel)]="maxSalary">
+                </div>
+
+                <div>
+                    <button type="button" class="bg-blue-600 px-4 py-2.5 rounded-md self-center text-center text-white w-full" (click)="applyFilters()">Filter </button>
+                </div>
+
+            </div>
         
             <div class="items-end justify-between p-5 sm:flex -mt-2 mb-2">
                 
@@ -49,7 +79,7 @@
                     </select>
                 </div> 
                 <div class="bg-white border flex items-center overflow-hidden relative rounded-lg">
-                    <a class="bg-white shadow inline-block px-8 py-1.5 rounded-md text-center">Add</a>
+                    <a  class="bg-white shadow inline-block px-8 py-1.5 rounded-md text-center">Add</a>
                 </div>
             </div>
 
@@ -57,7 +87,7 @@
                 <thead>
                     <tr class="border-b bg-gray-50 text-base text-black">
                         <th class="w-1/12 p-3 font-medium">No</th>
-                        <th class="w-6/12 p-3 font-medium ">Employee </th>
+                        <th class="w-6/12 p-3 font-medium ">Employee</th>
                         <th class="w-2/12 p-3 font-medium text-right">Date Of Birth</th>
                         <th class="w-2/12 p-3 font-medium text-right">Age</th>
                         <th class="w-2/12 p-3 font-medium text-right">Address</th>

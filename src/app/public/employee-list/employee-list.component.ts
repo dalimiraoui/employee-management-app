@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeOutputDTO } from 'src/app/shared/dto/output/EmployeeOutputDTO';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-list',
@@ -9,13 +10,18 @@ import { EmployeeService } from 'src/app/shared/services/employee.service';
 })
 export class EmployeeListComponent implements OnInit {
   employees: EmployeeOutputDTO[] = [];
-
+  unFilteredEmployees: EmployeeOutputDTO[] = [];
+  filteredEmployees: EmployeeOutputDTO[] = []; // Filtered employees list
+  minAge: number =0;
+  maxAge: number =100;
+  minSalary: number =0;
+  maxSalary: number =1000;
   //---- For Pagination Purpose
-  itemsPerPage = 5;
-  itemsEmployeesNumber=5;
-  totalEmployees = 100;
+  itemsPerPage = 10;
+  itemsEmployeesNumber=10;
+  totalEmployees = 1000;
   currentPage: number =1; // Default value of 1
-  pageSize : number =5;
+  pageSize : number =10;
 
   constructor( private employeeService : EmployeeService){}
 
@@ -28,6 +34,9 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.getEmployees(pageNumber, pageSize)
       .subscribe((data: EmployeeOutputDTO[]) => {
         this.employees = data; // Update the employees array with the retrieved data
+        console.log(this.employees)
+        this.itemsEmployeesNumber= this.employees.length;
+        this.unFilteredEmployees=data;
         console.log(this.employees)
       });
   }
@@ -42,4 +51,28 @@ export class EmployeeListComponent implements OnInit {
       this.loadEmployees( this.currentPage,this.pageSize,);
     }
   }
+
+ 
+  // Function to handle dropdown change
+  onItemsPerPageChange() {
+    console.log(this.itemsPerPage)
+    this.pageSize=this.itemsPerPage;
+    this.loadEmployees(1,this.itemsPerPage);
+  }
+
+  // Filter function
+  applyFilters() {
+    // Since I Can not modify the backend and I only have access for an endpoint that retrieve the data without filtering I am going to filter only the employees returned for each page
+    this.employees=this.unFilteredEmployees;
+    this.filteredEmployees = this.employees.filter((employee) => {
+      return (
+        employee.age >= this.minAge &&
+        employee.age <= this.maxAge &&
+        employee.salary >= this.minSalary &&
+        employee.salary <= this.maxSalary
+      );
+    });
+    this.employees=this.filteredEmployees;
+  }
+
 }
