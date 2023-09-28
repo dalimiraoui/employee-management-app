@@ -7,7 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
-import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 
 
 
@@ -16,7 +15,6 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
     PublicComponent,
     EmployeeListComponent,
     EmployeeAddComponent,
-    EmployeeEditComponent
   ],
   imports: [
     CommonModule,

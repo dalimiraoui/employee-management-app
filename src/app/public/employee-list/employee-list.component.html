@@ -21,14 +21,7 @@
                     </ul> 
                 </div>
             </div>
-            <div class="bg-gray-100 border inline-flex p-0.5 rounded-md text-lg self-center">
-                <a class="py-1.5 px-2.5 rounded-md bg-white shadow" data-tippy-placement="top" title="Grid view"> 
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg> 
-                </a>
-                <a class="py-1.5 px-2.5 rounded-md" data-tippy-placement="top" title="List view"> 
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                </a>
-            </div>
+            
         </div> 
 
         <div class="bg-white shadow rounded-md overflow-auto">
@@ -94,35 +87,35 @@
                              <ion-icon name="arrow-down-outline" (click)="sortEmployeesByNameDesc()"></ion-icon>
                             </span>
                         </th>
-                        <th class="w-3/12 p-3 font-medium text-right">
+                        <th class="w-3/12 p-3 font-medium text-center">
                             <ion-icon name="arrow-up-outline" (click)="sortEmployeesByDateOfBirthAsc()" ></ion-icon> 
                             <span class="ml-1"></span>Date Of Birth 
                             <span class="ml-1">
                                 <ion-icon name="arrow-down-outline" (click)="sortEmployeesByDateOfBirthDesc()"></ion-icon>
                             </span>
                         </th>
-                        <th class="w-2/12 p-3 font-medium text-right">
+                        <th class="w-2/12 p-3 font-medium text-center">
                             <ion-icon name="arrow-up-outline" (click)="sortEmployeesByAgeAsc()" ></ion-icon> 
                             <span class="ml-1"></span>Age
                             <span class="ml-1">
                                 <ion-icon name="arrow-down-outline" (click)="sortEmployeesByAgeDesc()"></ion-icon>
                             </span>
                         </th>
-                        <th class="w-2/12 p-3 font-medium text-right">
+                        <th class="w-2/12 p-3 font-medium text-center">
                             <ion-icon name="arrow-up-outline" (click)="sortEmployeesByAddressAsc()" ></ion-icon> 
                             <span class="ml-1"></span>Address
                             <span class="ml-1">
                                 <ion-icon name="arrow-down-outline" (click)="sortEmployeesByAddressDesc()"></ion-icon>
                             </span>
                         </th>
-                        <th class="w-2/12 p-3 font-medium text-right">
+                        <th class="w-2/12 p-3 font-medium text-center">
                             <ion-icon name="arrow-up-outline" (click)="sortEmployeesBySalaryAsc()" ></ion-icon> 
                             <span class="ml-1"></span>Salary
                             <span class="ml-1">
                                 <ion-icon name="arrow-down-outline" (click)="sortEmployeesBySalaryDesc()"></ion-icon>
                             </span>
                         </th>
-                        <th class="w-2/12 p-3 font-medium text-right">Action</th>
+                        <th class="w-2/12 p-3 font-medium text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -131,17 +124,17 @@
                         <td class="flex items-center space-x-3 p-3 pr-0  sm:w-auto">
                             <img [src]="employee.imageUrl" alt="" class="h-12 w-16 -ml-3 object-cover rounded-md md:block hidden">
                             <div class="flex-1 min-w-0">
-                              <a href="#" class="text-gray-600 text-sm font-medium hover:underline"> {{ employee.firstName }} {{ employee.lastName }}</a>
+                              <a  class="text-gray-600 text-sm font-medium hover:underline"> {{ employee.firstName }} {{ employee.lastName }}</a>
                               <p class="text-gray-400 text-xs">{{ employee.contactNumber }}</p>
                               <p class="text-gray-400 text-xs">{{ employee.email }}</p>
                             </div>
                         </td>
-                        <td class="py-3 text-right"> {{employee.dob}}</td>
-                        <td class="py-3 text-right "> {{employee.age}} </td>
+                        <td class="py-3 text-center"> {{employee.dob}}</td>
+                        <td class="py-3 text-center "> {{employee.age}} </td>
                         
-                        <td class="py-3 text-right"> {{employee.address}}</td>
-                        <td class="py-3 text-right"> {{employee.salary}} </td>
-                        <td class="p-3 text-right"> 
+                        <td class="py-3 text-center"> {{employee.address}}</td>
+                        <td class="py-3 text-center"> {{employee.salary}} </td>
+                        <td class="p-3 text-center"> 
                             <a href="#" class="hover:bg-gray-200 p-1.5 inline-block rounded-full" aria-expanded="false">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -151,7 +144,7 @@
                             uk-drop="pos: bottom-right">
                                 <ul class="space-y-1">
                                 <li>
-                                    <a   class="px-3 py-2 rounded-md block hover:bg-gray-100"> Edit </a>
+                                    <a (click)="goToEditPage(employee)"  class="px-3 py-2 rounded-md block hover:bg-gray-100"> Edit </a>
                                 </li>
                                 <li>
                                     <hr class="-mx-2 my-2 dark:border-gray-800">

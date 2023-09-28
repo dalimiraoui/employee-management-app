@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EmployeeOutputDTO } from 'src/app/shared/dto/output/EmployeeOutputDTO';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 import Swal from 'sweetalert2';
@@ -9,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
+  
   employees: EmployeeOutputDTO[] = [];
   unFilteredEmployees: EmployeeOutputDTO[] = [];
   filteredEmployees: EmployeeOutputDTO[] = []; // Filtered employees list
@@ -23,7 +25,10 @@ export class EmployeeListComponent implements OnInit {
   currentPage: number =1; // Default value of 1
   pageSize : number =10;
 
-  constructor( private employeeService : EmployeeService){}
+  constructor( 
+               private employeeService : EmployeeService,
+               private router: Router
+             ){}
 
   ngOnInit() {
     this.loadEmployees(this.currentPage,this.itemsPerPage); // Load employees when the component initializes
@@ -205,5 +210,12 @@ sortEmployeesBySalaryDesc() {
     return b.salary - a.salary;
   });
 }
+
+ // Naviage to Edit Page 
+ goToEditPage( employee : EmployeeOutputDTO)
+ {
+  console.log(employee);
+  //this.router.navigate(['/public/edit-employee'], { state: { employee: employee } });
+ }
 
 }

@@ -4,11 +4,12 @@ import { PublicComponent } from './public.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
 
 const routes: Routes = [
   { path: '', component: PublicComponent, children:[
-    {path:'employee-list', component:EmployeeListComponent},
-    {path:'error', component:ErrorComponent}, 
+    {path:'', component:EmployeeListComponent},
+    {path:'add-employee', component:EmployeeAddComponent}
   ] },
   
   ];
