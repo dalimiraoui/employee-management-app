@@ -114,7 +114,8 @@ sweetAlert2(employee: EmployeeOutputDTO) {
   onItemsPerPageChange() {
     console.log(this.itemsPerPage)
     this.pageSize=this.itemsPerPage;
-    this.loadEmployees(1,this.itemsPerPage);
+    this.currentPage=1;
+    this.loadEmployees(this.currentPage,this.itemsPerPage);
   }
 
   // Filter function
