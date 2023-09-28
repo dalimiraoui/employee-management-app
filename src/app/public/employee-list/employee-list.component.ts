@@ -84,7 +84,7 @@ sweetAlert2(employee: EmployeeOutputDTO) {
       if (result.isConfirmed) {
 
         // Basically here the method of delete employee from the employee.service will be called 
-          // Find the index of the employee to delete
+        // Find the index of the employee to delete
         const index = this.employees.findIndex((emp) => emp.id === employee.id);
 
         if (index !== -1) {
@@ -97,12 +97,12 @@ sweetAlert2(employee: EmployeeOutputDTO) {
                   "success"
                 ); 
         }
-        } else if (
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithTailwindButtons.fire("Cancelled", "", "error");
-        }
-      });
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithTailwindButtons.fire("Cancelled", "", "error");
+      }
+    });
   }
 
   // Function to handle dropdown change
@@ -126,5 +126,84 @@ sweetAlert2(employee: EmployeeOutputDTO) {
     });
     this.employees=this.filteredEmployees;
   }
+
+  // Sort employees By FirstName 
+  sortEmployeesByNameAsc()
+  {
+    this.employees.sort((a, b) => {
+      
+        return a.firstName.localeCompare(b.firstName);
+      
+    });
+  }
+  sortEmployeesByNameDesc()
+  {
+    this.employees.sort((a, b) => {
+      return b.firstName.localeCompare(a.firstName);
+   });
+
+  }
+  // Sort employees By Date of birth 
+  sortEmployeesByDateOfBirthAsc()
+  {
+    this.employees.sort((a, b) => {
+      const dateA = new Date( a.dob.split('/').reverse().join('-'));
+      const dateB = new Date(b.dob.split('/').reverse().join('-'));
+      return dateA.getTime() - dateB.getTime();
+      
+    });
+  }
+  sortEmployeesByDateOfBirthDesc()
+  {
+    this.employees.sort((a, b) => {
+      const dateA = new Date( a.dob.split('/').reverse().join('-'));
+      const dateB = new Date(b.dob.split('/').reverse().join('-'));
+      return dateB.getTime() - dateA.getTime();
+      
+   });
+
+  }
+  // Sort employees By Age 
+  sortEmployeesByAgeAsc() {
+    this.employees.sort((a, b) => {
+      return a.age - b.age;
+    });
+  }
+
+  sortEmployeesByAgeDesc() {
+    this.employees.sort((a, b) => {
+      return b.age - a.age;
+    });
+  }
+
+  // Sort employees By Address 
+  sortEmployeesByAddressAsc()
+  {
+    this.employees.sort((a, b) => {
+      
+        return a.address.localeCompare(b.address);
+      
+    });
+  }
+  sortEmployeesByAddressDesc()
+  {
+    this.employees.sort((a, b) => {
+      return b.address.localeCompare(a.address);
+   });
+
+  }
+  // Sort employees By Salary in Ascending Order
+sortEmployeesBySalaryAsc() {
+  this.employees.sort((a, b) => {
+    return a.salary - b.salary;
+  });
+}
+
+// Sort employees By Salary in Descending Order
+sortEmployeesBySalaryDesc() {
+  this.employees.sort((a, b) => {
+    return b.salary - a.salary;
+  });
+}
 
 }

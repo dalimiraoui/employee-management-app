@@ -22,10 +22,10 @@
                 </div>
             </div>
             <div class="bg-gray-100 border inline-flex p-0.5 rounded-md text-lg self-center">
-                <a href="#" class="py-1.5 px-2.5 rounded-md bg-white shadow" data-tippy-placement="top" title="Grid view"> 
+                <a class="py-1.5 px-2.5 rounded-md bg-white shadow" data-tippy-placement="top" title="Grid view"> 
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg> 
                 </a>
-                <a href="courses-card.html" class="py-1.5 px-2.5 rounded-md" data-tippy-placement="top" title="List view"> 
+                <a class="py-1.5 px-2.5 rounded-md" data-tippy-placement="top" title="List view"> 
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                 </a>
             </div>
@@ -87,11 +87,41 @@
                 <thead>
                     <tr class="border-b bg-gray-50 text-base text-black">
                         <th class="w-1/12 p-3 font-medium">No</th>
-                        <th class="w-6/12 p-3 font-medium ">Employee</th>
-                        <th class="w-2/12 p-3 font-medium text-right">Date Of Birth</th>
-                        <th class="w-2/12 p-3 font-medium text-right">Age</th>
-                        <th class="w-2/12 p-3 font-medium text-right">Address</th>
-                        <th class="w-2/12 p-3 font-medium text-right">Salary</th>
+                        <th class="w-4/12 p-3 font-medium ">
+                            <ion-icon name="arrow-up-outline" (click)="sortEmployeesByNameAsc()" ></ion-icon> 
+                            <span class="ml-1"></span>Employee 
+                            <span class="ml-1">
+                             <ion-icon name="arrow-down-outline" (click)="sortEmployeesByNameDesc()"></ion-icon>
+                            </span>
+                        </th>
+                        <th class="w-3/12 p-3 font-medium text-right">
+                            <ion-icon name="arrow-up-outline" (click)="sortEmployeesByDateOfBirthAsc()" ></ion-icon> 
+                            <span class="ml-1"></span>Date Of Birth 
+                            <span class="ml-1">
+                                <ion-icon name="arrow-down-outline" (click)="sortEmployeesByDateOfBirthDesc()"></ion-icon>
+                            </span>
+                        </th>
+                        <th class="w-2/12 p-3 font-medium text-right">
+                            <ion-icon name="arrow-up-outline" (click)="sortEmployeesByAgeAsc()" ></ion-icon> 
+                            <span class="ml-1"></span>Age
+                            <span class="ml-1">
+                                <ion-icon name="arrow-down-outline" (click)="sortEmployeesByAgeDesc()"></ion-icon>
+                            </span>
+                        </th>
+                        <th class="w-2/12 p-3 font-medium text-right">
+                            <ion-icon name="arrow-up-outline" (click)="sortEmployeesByAddressAsc()" ></ion-icon> 
+                            <span class="ml-1"></span>Address
+                            <span class="ml-1">
+                                <ion-icon name="arrow-down-outline" (click)="sortEmployeesByAddressDesc()"></ion-icon>
+                            </span>
+                        </th>
+                        <th class="w-2/12 p-3 font-medium text-right">
+                            <ion-icon name="arrow-up-outline" (click)="sortEmployeesBySalaryAsc()" ></ion-icon> 
+                            <span class="ml-1"></span>Salary
+                            <span class="ml-1">
+                                <ion-icon name="arrow-down-outline" (click)="sortEmployeesBySalaryDesc()"></ion-icon>
+                            </span>
+                        </th>
                         <th class="w-2/12 p-3 font-medium text-right">Action</th>
                     </tr>
                 </thead>
