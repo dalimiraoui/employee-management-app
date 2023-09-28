@@ -5,18 +5,25 @@ import { PublicComponent } from './public.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { IonicModule } from '@ionic/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 
 
 
 @NgModule({
   declarations: [
     PublicComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeAddComponent,
+    EmployeeEditComponent
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot()
   ]
 })

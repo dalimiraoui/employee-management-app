@@ -1,0 +1,131 @@
+
+<div id="wrapper" class="horizontal">
+    <div class="container">
+
+        <h3 class="text-2xl font-medium mb-5"> Add Employee </h3>
+
+        <form [formGroup]="registerForm">
+            <div class="grid lg:grid-cols-3 gap-8 md:mt-12">
+                <div>
+                    <div >
+                        <h3 class="text-lg mb-2 font-semibold"> Employee Add Form</h3>
+                        <p> Add the basic information required  to add an employee </p>
+                    </div>
+                    <div class="d-flex justify-content-between flex-sm-row flex-column">
+                        <button class="px-4 py-2 bg-blue-500 text-white rounded-md" (click)="onSubmit()">Submit</button>
+                    </div>
+                    <div *ngIf="isRegisterFailed" class="mt-1 text-danger">
+                        <em class="ft-alert-circle align-middle"></em> Register Employee is Failed! Please Try again.
+                    </div>
+                </div>
+                <div class="bg-white rounded-md lg:shadow-md shadow col-span-2">
+
+                    <div class="grid grid-cols-2 gap-3 lg:p-6 p-4">
+                        <div class="form-group">
+                            <label for="first-name"> First name <span class="text-red-600">*</span></label>
+                            <input type="text" id="first-name" class="form-control mb-3 shadow-none with-border" placeholder="Enter Employee's firstName" formControlName="firstName" [ngClass]="{
+                                'is-invalid': (rf.firstName.dirty || rf.firstName.touched) && rf.firstName.invalid,
+                                'is-valid': (rf.firstName.dirty || rf.firstName.touched) && !rf.firstName.invalid
+                              }" >
+                            <div class="text-red-500 text-sm mt-1" *ngIf="rf.firstName.touched  && rf.firstName.invalid">
+                                <div *ngIf="buttonClicked && rf.firstName.errors?.['required']" class="help-block mt-1 text-danger">
+                                    <em class="ft-alert-circle align-middle"></em> This is required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name"> Last name <span class="text-red-600">*</span></label>
+                            <input type="text" id="last-name" class="form-control mb-3 shadow-none with-border" placeholder="Enter Employee's lastName" formControlName="lastName" [ngClass]="{
+                                'is-invalid': (rf.lastName.dirty || rf.lastName.touched) && rf.lastName.invalid,
+                                'is-valid': (rf.lastName.dirty || rf.lastName.touched) && !rf.lastName.invalid
+                              }"
+                            >
+                            <div class="text-red-500 text-sm mt-1" *ngIf="rf.lastName.touched  && rf.lastName.invalid">
+                                <div *ngIf="buttonClicked && rf.lastName.errors?.['required']" class="help-block mt-1 text-danger">
+                                    <em class="ft-alert-circle align-middle">This is required</em>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"> Email <span class="text-red-600">*</span></label>
+                            <input type="text"  id="email" class="form-control mb-3 shadow-none with-border"  formControlName="email"  placeholder="Enter Employee's Email" [ngClass]="{
+                                'is-invalid': (rf.email.dirty || rf.email.touched) && rf.email.invalid,
+                                'is-valid': (rf.email.dirty || rf.email.touched) && !rf.email.invalid
+                              }" />
+                            <div *ngIf="buttonClicked && rf.email.errors?.['required']" class="help-block mt-1 text-danger">
+                                <em class="ft-alert-circle align-middle"></em> This is required
+                            </div>
+                            <div *ngIf="(rf.email.dirty || rf.email.touched) && rf.email.errors?.['maxlength']" class="help-block mt-1 text-danger">
+                                <em class="ft-alert-circle align-middle"></em> Max length exceeded
+                            </div>
+                            <div *ngIf="(rf.email.dirty || rf.email.touched) && rf.email.errors?.['pattern']" class="help-block mt-1 text-danger ">
+                                <em class="ft-alert-circle align-middle"></em> Invalid Email Address
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone"> Phone Number <span class="text-red-600">*</span></label>
+                            <input type="number"  id="phone" class="form-control mb-3 shadow-none with-border" formControlName="phone"  placeholder="Enter Employee's Phone Number" [ngClass]="{
+                                'is-invalid': (rf.phone.dirty || rf.phone.touched) && rf.phone.invalid,
+                                'is-valid': (rf.phone.dirty || rf.phone.touched) && !rf.phone.invalid
+                              }" />
+                            <div *ngIf="buttonClicked && rf.phone.errors?.['required']" class="help-block mt-1 text-danger">
+                                <em class="ft-alert-circle align-middle"></em> This is required
+                            </div>
+                            <div *ngIf="(rf.phone.dirty || rf.phone.touched) && rf.phone.errors?.['maxlength']" class="help-block mt-1 text-danger">
+                                <em class="ft-alert-circle align-middle"></em> Max length exceeded
+                            </div>
+                            
+                        </div> 
+                        
+                        
+                        <label for="system_info" class="font-medium">Photo  </label>
+                        <div class="col-span-2 flex py-2 space-x-5">
+                            <input type="file" id="photo-upload" accept="image/*" style="display: none;" (change)="onFileSelected($event)">
+                            <label for="photo-upload" class="cursor-pointer">
+                                <img id="photo-upload" [src]="imageUrl" alt="" class="h-24 rounded-full w-24">
+                                
+                                
+                            </label>
+                            <a class="border font-medium px-3 py-1.5 rounded-md self-center shadow-sm text-center text-sm" (click)="ResetPhoto()">Reset</a>
+                        </div>
+
+                        <div class="col-span-2">
+                            <label for="Location"> Location</label>
+                            <input type="text" id="location" class="form-control mb-3 shadow-none with-border" placeholder="Enter Employee's Address" formControlName="address" [ngClass]="{
+                                'is-invalid': (rf.address.dirty || rf.address.touched) && rf.address.invalid,
+                                'is-valid': (rf.address.dirty || rf.address.touched) && !rf.address.invalid
+                              }" />
+                            <div *ngIf="buttonClicked && rf.address.errors?.['required']" class="help-block mt-1 text-danger">
+                                <em class="ft-alert-circle align-middle"></em> This is required
+                            </div>
+                        </div>
+                        <div>
+                            <label for="date-of-birth">Date Of Birth</label>
+                            <input type="date" id="date-of-birth" class="form-control mb-3 shadow-none with-border" formControlName="dateOfBirth" [ngClass]="{
+                                'is-invalid': (rf.dateOfBirth.dirty || rf.dateOfBirth.touched) && rf.dateOfBirth.invalid,
+                                'is-valid': (rf.dateOfBirth.dirty || rf.dateOfBirth.touched) && !rf.dateOfBirth.invalid
+                              }" />
+                            <div *ngIf="buttonClicked && rf.dateOfBirth.errors?.['required']" class="help-block mt-1 text-danger">
+                                <em class="ft-alert-circle align-middle"></em> This is required
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="salary"> Salary </label>
+                            <input type="number" placeholder="" id="salary" class="form-control mb-3 shadow-none with-border" placeholder="Enter Employee's Salary" formControlName="salary" [ngClass]="{
+                                'is-invalid': (rf.salary.dirty || rf.salary.touched) && rf.salary.invalid,
+                                'is-valid': (rf.salary.dirty || rf.salary.touched) && !rf.salary.invalid
+                              }" />
+                            <div *ngIf="buttonClicked && rf.salary.errors?.['required']" class="help-block mt-1 text-danger">
+                                <em class="ft-alert-circle align-middle"></em> This is required
+                            </div>
+                        </div>
+                    </div> 
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+

@@ -5,7 +5,7 @@ import { ErrorComponent } from './public/error/error.component';
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "redirect",
+    redirectTo: "public",
     pathMatch: "full"
   },
   {
