@@ -52,7 +52,59 @@ export class EmployeeListComponent implements OnInit {
     }
   }
 
- 
+  // Delete an Employee
+  deleteEmployee(employee: EmployeeOutputDTO) {
+  this.sweetAlert2(employee);
+  
+}
+
+/**----this is for a sweat alert  method for employee deleting----*/
+
+sweetAlert2(employee: EmployeeOutputDTO) {
+  const swalWithTailwindButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md mr-4",
+      cancelButton: "bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
+    },
+    buttonsStyling: false
+  });
+  
+
+  swalWithTailwindButtons.fire({
+      title:
+        "Are you sure you want to delete this ?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+      reverseButtons: false
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+
+        // Basically here the method of delete employee from the employee.service will be called 
+          // Find the index of the employee to delete
+        const index = this.employees.findIndex((emp) => emp.id === employee.id);
+
+        if (index !== -1) {
+          // Remove the employee from the employees array
+          this.employees.splice(index, 1); 
+            // if the delete is successfully done this message will be displayed
+                swalWithTailwindButtons.fire(
+                  "Deleted!",
+                  "The employee has been deleted.",
+                  "success"
+                ); 
+        }
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithTailwindButtons.fire("Cancelled", "", "error");
+        }
+      });
+  }
+
   // Function to handle dropdown change
   onItemsPerPageChange() {
     console.log(this.itemsPerPage)
